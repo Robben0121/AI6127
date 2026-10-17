@@ -1,4 +1,4 @@
-# AI6127 课程作业：混合检索增强生成系统（Amazon 2023 服装数据集）
+# AI6127 课程作业（Amazon 2023 服装数据集）
 
 **NTU AI6127 | 混合检索增强生成系统（Hybrid RAG System）**
 
@@ -24,11 +24,8 @@ AI6127/
 
 ## 环境配置与依赖安装
 
-首先创建并激活 Conda 虚拟环境，然后安装所需依赖包：
 
 ```bash
-conda create -n langchain_env python=3.10
-conda activate langchain_env
 pip install -r requirements.txt
 ```
 
