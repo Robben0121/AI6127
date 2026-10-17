@@ -47,7 +47,7 @@ jsonlines
 
 ### 构建流程
 
-1. **数据来源**：`meta_Clothing_Shoes_and_Jewelry.jsonl.gz`（[原始数据直链](https://mcauleylab.ucsd.edu:8443/public_datasets/data/amazon_2023/raw/meta_categories/meta_Clothing_Shoes_and_Jewelry.jsonl.gz)）
+1. **数据来源**：`meta_Clothing_Shoes_and_Jewelry.jsonl.gz`（[原始数据直链](https://mcauleylab.ucsd.edu:8443/public_datasets/data/amazon_2023/raw/meta_categories/)）
 2. **流式加载（Streaming Load）**：以流式方式直接读取压缩的 `.jsonl.gz` 数据，无需将整个庞大数据集完整下载到本地磁盘，从而大幅节省内存与存储空间。
 3. **过滤与采样（Filter & Sample）**：采样 10,000 条商品记录，每条记录通过唯一的 `ASIN`（Amazon 标准识别号，即商品唯一 ID）进行标识。
 4. **文档格式化（Document Format）**：将每件商品的标题（Title）、类目（Categories）、商品特性（Features）及规格参数拼接为一段完整的文本段落：
