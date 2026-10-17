@@ -1,0 +1,7 @@
+datasets
+rank-bm25
+faiss-cpu
+sentence-transformers
+gradio
+gzip
+jsonlines
