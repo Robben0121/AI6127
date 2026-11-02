@@ -1,8 +1,12 @@
+import os
 import json
 from rank_bm25 import BM25Okapi
 
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+KB_PATH = os.path.join(DATA_DIR, "kb.json")
+
 # load knowledge base
-with open("kb.json","r",encoding="utf-8") as f:
+with open(KB_PATH, "r", encoding="utf-8") as f:
     kb = json.load(f)
 
 doc_texts = [item["text"] for item in kb]

@@ -7,9 +7,10 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sparse_bm25 import bm25_retrieve
 
-FAISS_INDEX_PATH = "faiss_index.bin"
-ID_MAP_PATH = "id_map.json"
-KB_PATH = "kb.json"
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+FAISS_INDEX_PATH = os.path.join(DATA_DIR, "faiss_index.bin")
+ID_MAP_PATH = os.path.join(DATA_DIR, "id_map.json")
+KB_PATH = os.path.join(DATA_DIR, "kb.json")
 
 # load faiss
 faiss_index = faiss.read_index(FAISS_INDEX_PATH)
@@ -19,10 +20,11 @@ with open(KB_PATH, "r", encoding="utf-8") as f:
     kb_data = json.load(f)
 kb_dict = {item["id"]: item["text"] for item in kb_data}
 
-emb_model = SentenceTransformer("all-MiniLM-L6-v2")
+# 注意：模型名需与 build_faiss.py 中保持一致
+emb_model = SentenceTransformer("BAAI/bge-m3")
 
 def dense_retrieve(query: str, top_k=20):
-    q_emb = emb_model.encode([query], convert_to_numpy=True)
+    q_emb = emb_model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
     _, I = faiss_index.search(q_emb, k=top_k)
     res = []
     for pos, idx in enumerate(I[0]):
